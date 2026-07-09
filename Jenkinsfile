@@ -25,5 +25,18 @@ pipeline {
                 }
             }
         }
+        stage('Code coverage') {
+            steps {
+                bat 'mvn clean verify'
+                publishHTML(target: [
+                    reportDir: 'target/site/jacoco',
+                    reportFiles: 'index.html',
+                    reportName: 'JaCoCo Report',
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true,
+                    allowMissing: false
+                ])
+            }
+        }
     }
 }
