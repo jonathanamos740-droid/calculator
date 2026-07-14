@@ -42,7 +42,7 @@ pipeline {
             steps {
                 bat 'mvn checkstyle:checkstyle'
                 publishHTML(target: [
-                    reportDir: 'target/site',
+                    reportDir: 'target/report',
                     reportFiles: 'checkstyle.html',
                     reportName: 'Checkstyle Report',
                     keepAll: true,
