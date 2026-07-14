@@ -38,5 +38,18 @@ pipeline {
                 ])
             }
         }
+        stage('Checkstyle') {
+            steps {
+                bat 'mvn checkstyle:checkstyle'
+                publishHTML(target: [
+                    reportDir: 'target/site',
+                    reportFiles: 'checkstyle.html',
+                    reportName: 'Checkstyle Report',
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true,
+                    allowMissing: false
+                ])
+            }
+        }
     }
 }
