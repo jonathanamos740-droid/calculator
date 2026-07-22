@@ -4,6 +4,10 @@ pipeline {
     triggers {
         githubPush()
     }
+    triggers {
+        githubPush()
+        cron('H/2 * * * *')
+    }
 
     tools {
         maven 'Maven'
