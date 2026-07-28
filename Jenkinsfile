@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-
     triggers {
         githubPush()
         cron('H 2 * * *')
     }
+
     post {
         always {
             emailext(
@@ -25,6 +25,14 @@ pipeline {
     </html>
     """
             )
+
+            withCredentials([string(credentialsId: 'slack-webhook-url', variable: 'SLACK_URL')]) {
+                bat """
+                curl -X POST -H "Content-Type: application/json" ^
+                -d "{\\"message\\": \\"Build ${currentBuild.currentResult}: ${env.JOB_NAME} #${env.BUILD_NUMBER}\\"}" ^
+                %SLACK_URL%
+                """
+            }
         }
     }
 
