@@ -30,7 +30,7 @@ pipeline {
                     <td style="padding: 10px 0; color: #24292f; font-weight: 600;">${env.JOB_NAME}</td>
                 </tr>
                 <tr style="border-top: 1px solid #eaeef2;">
-                    <td style="padding: 12px 0; color: #6e7781;">Build</td>
+                    <td style="padding: 10px 0; color: #6e7781;">Build</td>
                     <td style="padding: 10px 0; color: #24292f;">#${env.BUILD_NUMBER}</td>
                 </tr>
                 <tr style="border-top: 1px solid #eaeef2;">
